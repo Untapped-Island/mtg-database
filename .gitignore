@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 # Created by https://www.toptal.com/developers/gitignore/api/node
 # Edit at https://www.toptal.com/developers/gitignore?templates=node
 
 ### Node ###
+=======
+>>>>>>> 60ccb7975feed557445313b57a1299ca15ff0924
 # Logs
 logs
 *.log
@@ -9,7 +12,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
+<<<<<<< HEAD
 .pnpm-debug.log*
+=======
+>>>>>>> 60ccb7975feed557445313b57a1299ca15ff0924
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
@@ -46,8 +52,13 @@ build/Release
 node_modules/
 jspm_packages/
 
+<<<<<<< HEAD
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
+=======
+# TypeScript v1 declaration files
+typings/
+>>>>>>> 60ccb7975feed557445313b57a1299ca15ff0924
 
 # TypeScript cache
 *.tsbuildinfo
@@ -58,9 +69,12 @@ web_modules/
 # Optional eslint cache
 .eslintcache
 
+<<<<<<< HEAD
 # Optional stylelint cache
 .stylelintcache
 
+=======
+>>>>>>> 60ccb7975feed557445313b57a1299ca15ff0924
 # Microbundle cache
 .rpt2_cache/
 .rts2_cache_cjs/
@@ -76,6 +90,7 @@ web_modules/
 # Yarn Integrity file
 .yarn-integrity
 
+<<<<<<< HEAD
 # dotenv environment variable files
 .env
 .env.development.local
@@ -90,6 +105,17 @@ web_modules/
 # Next.js build output
 .next
 out
+=======
+# dotenv environment variables file
+.env
+.env.test
+
+# parcel-bundler cache (https://parceljs.org/)
+.cache
+
+# Next.js build output
+.next
+>>>>>>> 60ccb7975feed557445313b57a1299ca15ff0924
 
 # Nuxt.js build / generate output
 .nuxt
@@ -97,19 +123,26 @@ dist
 
 # Gatsby files
 .cache/
+<<<<<<< HEAD
 # Comment in the public line in if your project uses Gatsby and not Next.js
+=======
+# Comment in the public line in if your project uses Gatsby and *not* Next.js
+>>>>>>> 60ccb7975feed557445313b57a1299ca15ff0924
 # https://nextjs.org/blog/next-9-1#public-directory-support
 # public
 
 # vuepress build output
 .vuepress/dist
 
+<<<<<<< HEAD
 # vuepress v2.x temp and cache directory
 .temp
 
 # Docusaurus cache and generated files
 .docusaurus
 
+=======
+>>>>>>> 60ccb7975feed557445313b57a1299ca15ff0924
 # Serverless directories
 .serverless/
 
@@ -121,6 +154,7 @@ dist
 
 # TernJS port file
 .tern-port
+<<<<<<< HEAD
 
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
@@ -142,3 +176,5 @@ dist
 .svelte-kit
 
 # End of https://www.toptal.com/developers/gitignore/api/node
+=======
+>>>>>>> 60ccb7975feed557445313b57a1299ca15ff0924
