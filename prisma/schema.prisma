@@ -1,0 +1,62 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearch"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Test {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  title     String   @db.VarChar(255)
+  content   String?
+  author    Tester   @relation(fields: [testerId], references: [id])
+  testerId  Int
+}
+
+model Tester {
+  id    Int     @id @default(autoincrement())
+  email String  @unique
+  name  String?
+  tests Test[]
+}
+
+model Color {
+  id   String @id
+  full String @unique
+}
+
+model Type {
+  id    String @id
+  cards Card[]
+}
+
+model SubType {
+  id    String @id
+  cards Card[]
+}
+
+model SuperType {
+  id    String @id
+  cards Card[]
+}
+
+model Card {
+  id         Int         @id @default(autoincrement())
+  name       String      @unique
+  fullType   String
+  types      Type[]
+  subTypes   SubType[]
+  superTypes SuperType[]
+  power      Float?
+  toughness  Float?
+  manaCost   String?
+  manaValue  Float
+  colors     Int
+}
