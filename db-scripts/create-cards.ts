@@ -17,11 +17,19 @@ async function main() {
         superTypes: {
           connect: card.supertypes.map(superType => ({ id: superType }))
         },
+        keywords: {
+          connect: card.keywords.map(keyword => ({ id: keyword }))
+        },
+        sets: {
+          connect: card.sets.map(set => ({ id: set }))
+        },
         power: card.power,
         toughness: card.toughness,
         manaCost: card.manaCost,
         manaValue: card.manaValue,
         colors: card.colors,
+        colorIdentities: card.colorIdentities,
+        formats: card.formats,
       }
     })
   }))
