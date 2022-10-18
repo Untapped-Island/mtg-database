@@ -50,7 +50,7 @@ for (let name of Object.keys(atomicJSON.data)) {
 
     let formats = 0;
     if (card.legalities) {
-      card.legalities.forEach((format) => {
+      Object.keys(card.legalities).forEach((format) => {
         formats = formats | formatsEnum[format]
       })
     }
