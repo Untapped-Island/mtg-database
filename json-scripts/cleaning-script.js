@@ -49,9 +49,11 @@ for (let name of Object.keys(atomicJSON.data)) {
     })
 
     let formats = 0;
-    card.legalities.forEach((format) => {
-      formats = formats | formatsEnum[format]
-    })
+    if (card.legalities) {
+      card.legalities.forEach((format) => {
+        formats = formats | formatsEnum[format]
+      })
+    }
 
     cardsArray.push({
       id: card.identifiers.scryfallOracleId,

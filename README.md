@@ -7,7 +7,20 @@ This repository holds a collection of scripts that aid in working with the proje
 <!-- What does this repository do? Is there anything the user needs to do? Is there an end-user? -->
 
 We use [Prisma](https://www.prisma.io/) as our ORM.  
-To create a local, working version of the database, the following steps must be taken.
+To create a local, working version of the database, the following steps must be taken. DO NOT run the following commands in the production database environment.
+
+- Download the `AtomicCards.json` and `EnumValues.json` files from [MTGJSON](https://mtgjson.com/downloads/all-files/). Place these files in the `json/` directory of the cloned repository.
+- Create a `.env` file in the root directory of the cloned repository. Place the following line inside the file. 
+  ```
+  postgresql://<username>:<password>@localhost:5432/mtgdb?schema=public
+  ```
+- Run the following commands in your terminal
+  ```bash
+  npm i
+  npx prisma migrate dev
+  npx ts-node db-scripts/create-types.ts
+
+  ```
 
 
 ## Tests

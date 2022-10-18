@@ -156,5 +156,5 @@ dist
 
 # These files should be downloaded by the developer, but not committed
 # https://mtgjson.com/downloads/all-files/
-AtomicCards.json
-EnumValues.json
+json/AtomicCards.json
+json/EnumValues.json
