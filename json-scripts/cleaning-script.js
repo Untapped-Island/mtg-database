@@ -92,5 +92,5 @@ for (let card of cardsArray) {
 const sampleCards = cardsArray.slice(500, 1000);
 module.exports = { cardsArray, sampleCards };
 
-// const data = JSON.stringify(sliced)
-// fs.writeFileSync('./cleaned-cards.json', data)
+const data = JSON.stringify(cardsArray)
+fs.writeFileSync('./cleaned-cards.json', data)
