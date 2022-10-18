@@ -1,38 +1,49 @@
 import { PrismaClient } from '@prisma/client';
-import { cardsArray } from './clean-script'
+import { cardsArray } from '../json-scripts/cleaning-script'
 const prisma = new PrismaClient();
 
+// We call this function when running the script.
 async function main() {
-  await Promise.all(cardsArray.map(async (card, i) => {
-    await prisma.card.create({
-      data: {
-        name: card.name,
-        fullType: card.type,
-        types: {
-          connect: card.types.map(type => ({ id: type }))
-        },
-        subTypes: {
-          connect: card.subtypes.map(subType => ({ id: subType }))
-        },
-        superTypes: {
-          connect: card.supertypes.map(superType => ({ id: superType }))
-        },
-        keywords: {
-          connect: card.keywords.map(keyword => ({ id: keyword }))
-        },
-        sets: {
-          connect: card.sets.map(set => ({ id: set }))
-        },
-        power: card.power,
-        toughness: card.toughness,
-        manaCost: card.manaCost,
-        manaValue: card.manaValue,
-        colors: card.colors,
-        colorIdentities: card.colorIdentities,
-        formats: card.formats,
-      }
+  for (let card of cardsArray) {
+    const data = {
+      id: card.id,
+      name: card.name,
+      fullType: card.type,
+      types: {
+        connect: card.types.map((type: string) => ({ id: type }))
+      },
+      subTypes: {
+        connect: card.subtypes.map((subType: string) => ({ id: subType }))
+      },
+      superTypes: {
+        connect: card.supertypes.map((superType: string) => ({ id: superType }))
+      },
+      keywords: {
+        connect: card.keywords.map((keyword: string) => ({ id: keyword }))
+      },
+      sets: {
+        connect: card.sets.map((set: string) => ({ id: set }))
+      },
+      power: card.power,
+      toughness: card.toughness,
+      manaCost: card.manaCost,
+      manaValue: card.manaValue,
+      colors: card.colors,
+      colorIdentity: card.colorIdentity,
+      formats: 0,
+    };
+
+    await prisma.card.upsert({
+      where: { id: card.id },
+      update: data,
+      create: data,
     })
-  }))
+    console.log(card.name)
+  }
+  // await prisma.$transaction([
+  //   prisma.card.createMany({ data: createCards }),
+
+  // ])
 }
 
 main()

@@ -11,25 +11,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Test {
+model Player {
   id        Int      @id @default(autoincrement())
+  name      String
+  password  String
   createdAt DateTime @default(now())
-  title     String   @db.VarChar(255)
-  content   String?
-  author    Tester   @relation(fields: [testerId], references: [id])
-  testerId  Int
-}
-
-model Tester {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
-  tests Test[]
-}
-
-model Color {
-  id   String @id
-  full String @unique
+  cards     Card[]
 }
 
 model Type {
@@ -48,15 +35,20 @@ model SuperType {
 }
 
 model Card {
-  id         Int         @id @default(autoincrement())
-  name       String      @unique
-  fullType   String
+  id            String  @id @default(uuid())
+  name          String  @unique
+  fullType      String
+  power         Float?
+  toughness     Float?
+  manaCost      String?
+  manaValue     Float
+  colors        Int
+  colorIdentity Int
+  formats       Int
+
+  // Relations
   types      Type[]
   subTypes   SubType[]
   superTypes SuperType[]
-  power      Float?
-  toughness  Float?
-  manaCost   String?
-  manaValue  Float
-  colors     Int
+  players    Player[]
 }
