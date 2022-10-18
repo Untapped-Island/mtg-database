@@ -1,4 +1,4 @@
-const atomicJSON = require('./AtomicCards.json');
+const atomicJSON = require('../json/AtomicCards.json');
 const fs = require('fs');
 
 const colorsEnum = {
@@ -16,8 +16,6 @@ const formatEnum = {
 }
 
 const cardsArray = [];
-
-// console.log(atomicJSON.data)
 
 for (let name of Object.keys(atomicJSON.data)) {
   card = atomicJSON.data[name][0]
@@ -58,7 +56,6 @@ for (let name of Object.keys(atomicJSON.data)) {
     })
   }
 
-  // })
 }
 
 function parseToughness(card) {
@@ -92,5 +89,5 @@ for (let card of cardsArray) {
 const sampleCards = cardsArray.slice(500, 1000);
 module.exports = { cardsArray, sampleCards };
 
-const data = JSON.stringify(cardsArray)
-fs.writeFileSync('./cleaned-cards.json', data)
+// const data = JSON.stringify(cardsArray)
+// fs.writeFileSync('../json/cleaned-cards.json', data)
