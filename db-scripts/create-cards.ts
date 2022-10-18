@@ -1,9 +1,9 @@
 import { PrismaClient } from '@prisma/client';
-import { cardsArray } from './clean-script'
+import { cardsArray } from '../json-scripts/cleaning-script'
 const prisma = new PrismaClient();
 
 async function main() {
-  await Promise.all(cardsArray.map(async (card, i) => {
+  await Promise.all(cardsArray.map(async (card) => {
     await prisma.card.create({
       data: {
         name: card.name,
@@ -22,6 +22,8 @@ async function main() {
         manaCost: card.manaCost,
         manaValue: card.manaValue,
         colors: card.colors,
+        colorIdentity: card.colorIdentity,
+        formats: 0,
       }
     })
   }))
