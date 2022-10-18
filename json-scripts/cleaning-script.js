@@ -9,35 +9,50 @@ const colorsEnum = {
   'B': 1 << 4,
 }
 
-const formatEnum = {
+const formatsEnum = {
   'brawl': 1 << 0,
-  'duel': 1 << 1,
-  'frontier': 1 << 2, 
+  'commander': 1 << 1,
+  'duel': 1 << 2,
+  'future': 1 << 3 ,
+  'frontier': 1 << 4,
+  'gladiator': 1 << 5,
+  'historic': 1 << 6,
+  'historicbrawl': 1 << 7,
+  'legacy': 1 << 8,
+  'modern': 1 << 9,
+  'oldschool': 1 << 10,
+  'pauper': 1 << 11,
+  'paupercommander': 1 << 12,
+  'penny': 1 << 13,
+  'pioneer': 1 << 14,
+  'premodern': 1 << 15,
+  'standard': 1 << 16,
+  'vintage': 1 << 17,
 }
 
 const cardsArray = [];
 
 for (let name of Object.keys(atomicJSON.data)) {
-  card = atomicJSON.data[name][0]
-  let colors = 0;
-  let colorIdentity = 0
-  let formats = []
+  
+  const card = atomicJSON.data[name][0];
+
   if (card.layout === 'normal' && card.identifiers.scryfallOracleId) {    
     
+    let colors = 0;
     card.colors.forEach((color) => {
       colors = colors | colorsEnum[color]
     })
 
+    let colorIdentity = 0;
     card.colorIdentity.forEach((color) => {
       colorIdentity = colorIdentity | colorsEnum[color]
     })
 
-    if (card.legalities) {
-      Object.keys(card.legalities).forEach(format => {
-        formats.push(format)
-      })
-    }
-    
+    let formats = 0;
+    card.legalities.forEach((format) => {
+      formats = formats | formatsEnum[format]
+    })
+
     cardsArray.push({
       id: card.identifiers.scryfallOracleId,
       colorIdentity: colorIdentity,
@@ -55,8 +70,8 @@ for (let name of Object.keys(atomicJSON.data)) {
       formats: formats,
     })
   }
-
 }
+
 
 function parseToughness(card) {
   if (card.toughness !== null && card.toughness !== '*') {
@@ -81,10 +96,7 @@ function parsePower(card) {
 for (let card of cardsArray) {
   parseToughness(card);
   parsePower(card);
-
 }
-
-
 
 const sampleCards = cardsArray.slice(500, 1000);
 module.exports = { cardsArray, sampleCards };
