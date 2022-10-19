@@ -49,9 +49,11 @@ for (let name of Object.keys(atomicJSON.data)) {
     })
 
     let formats = 0;
-    card.legalities.forEach((format) => {
-      formats = formats | formatsEnum[format]
-    })
+    if (card.legalities) {
+      Object.keys(card.legalities).forEach((format) => {
+        formats = formats | formatsEnum[format]
+      })
+    }
 
     cardsArray.push({
       id: card.identifiers.scryfallOracleId,
@@ -71,7 +73,6 @@ for (let name of Object.keys(atomicJSON.data)) {
     })
   }
 }
-
 
 function parseToughness(card) {
   if (card.toughness !== null && card.toughness !== '*') {
@@ -98,8 +99,7 @@ for (let card of cardsArray) {
   parsePower(card);
 }
 
-const sampleCards = cardsArray.slice(500, 1000);
-module.exports = { cardsArray, sampleCards };
+module.exports = { cardsArray };
 
 // const data = JSON.stringify(cardsArray)
-// fs.writeFileSync('../json/cleaned-cards.json', data)
+// fs.writeFileSync('./json/cleaned-cards.json', data)

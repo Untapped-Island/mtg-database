@@ -2,15 +2,15 @@ import { PrismaClient } from '@prisma/client';
 import EnumValues from '../json/EnumValues.json';
 const prisma = new PrismaClient();
 
-const mapTypes = EnumValues.card.types.map(type => {
+const mapTypes = EnumValues.data.card.types.map(type => {
   return {id: type}
 })
 
-const mapSubtypes = EnumValues.card.subtypes.map(subtype => {
+const mapSubtypes = EnumValues.data.card.subtypes.map(subtype => {
   return {id: subtype}
 })
 
-const mapSupertypes = EnumValues.card.supertypes.map(supertype => {
+const mapSupertypes = EnumValues.data.card.supertypes.map(supertype => {
   return {id: supertype}
 })
 

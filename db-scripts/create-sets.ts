@@ -2,7 +2,7 @@ import { PrismaClient } from '@prisma/client';
 import EnumValues from '../json/EnumValues.json';
 const prisma = new PrismaClient();
 
-const sets = EnumValues.card.watermark.map(watermark => {
+const sets = EnumValues.data.card.watermark.map(watermark => {
   if (watermark.includes('set (')) {
     return { id: watermark.substring(5, 8) }
   }
