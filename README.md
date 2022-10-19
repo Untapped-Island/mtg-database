@@ -19,7 +19,7 @@ To create a local, working version of the database, the following steps must be 
   npm i
   npx prisma migrate dev
   npx ts-node db-scripts/create-types.ts
-
+  npx ts-node db-scripts/create-cards.ts
   ```
 
 

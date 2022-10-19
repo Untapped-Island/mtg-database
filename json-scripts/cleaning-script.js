@@ -74,7 +74,6 @@ for (let name of Object.keys(atomicJSON.data)) {
   }
 }
 
-
 function parseToughness(card) {
   if (card.toughness !== null && card.toughness !== '*') {
     card.toughness = parseFloat(card.toughness)
@@ -100,8 +99,8 @@ for (let card of cardsArray) {
   parsePower(card);
 }
 
-const sampleCards = cardsArray.slice(500, 1000);
+const sampleCards = cardsArray.slice(500, 3000);
 module.exports = { cardsArray, sampleCards };
 
-// const data = JSON.stringify(cardsArray)
-// fs.writeFileSync('../json/cleaned-cards.json', data)
+// const data = JSON.stringify(sampleCards)
+// fs.writeFileSync('./json/cleaned-cards.json', data)
