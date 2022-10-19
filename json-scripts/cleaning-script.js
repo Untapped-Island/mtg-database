@@ -99,8 +99,7 @@ for (let card of cardsArray) {
   parsePower(card);
 }
 
-const sampleCards = cardsArray.slice(500, 3000);
-module.exports = { cardsArray, sampleCards };
+module.exports = { cardsArray };
 
-// const data = JSON.stringify(sampleCards)
+// const data = JSON.stringify(cardsArray)
 // fs.writeFileSync('./json/cleaned-cards.json', data)
