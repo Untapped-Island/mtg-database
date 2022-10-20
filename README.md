@@ -15,14 +15,13 @@ To create a local, working version of the database, the following steps must be 
   ```
     DATABASE_URL=postgresql://<username>:<password>@localhost:5432/mtgdb?schema=public
   ```
+  _Note that you will need to have Postgres running on your local machine for this to work. Use an existing username and password (if necessary) in place of the bracketed values, and the migrate command will take care of the rest._
 
 - Run the following commands in your terminal
 
   ```bash
     npm i
     npx prisma migrate dev
-    npx ts-node db-scripts/create-types.ts
-    npx ts-node db-scripts/create-cards.ts
   ```
 
 _NOTE: It is possible that Node runs out of memory and throws an error when parsing the AtomicCards.json file. If this happens and you would still like to spin up a development database by pointing the `require` statement in `json-scripts/cleaning-script.js` to `AtomicCards_SAMPLE.json`._
