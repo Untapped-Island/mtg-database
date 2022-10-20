@@ -9,13 +9,13 @@ async function main() {
       id: card.id,
       name: card.name,
       fullType: card.type,
-      types: {
+      Type: {
         connect: card.types.map((type: string) => ({ id: type }))
       },
-      subTypes: {
+      SubType: {
         connect: card.subtypes.map((subType: string) => ({ id: subType }))
       },
-      superTypes: {
+      SuperType: {
         connect: card.supertypes.map((superType: string) => ({ id: superType }))
       },
       // keywords: {
